@@ -1,7 +1,8 @@
+import RewardSection from '@/components/RewardSection'
 import React from 'react'
 
 function Page() {
-	return <div>Page</div>
+	return <RewardSection />
 }
 
 export default Page

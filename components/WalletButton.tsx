@@ -44,7 +44,7 @@ const WalletButton = () => {
 		}
 	}
 	return (
-		<>
+		<div className="">
 			{connected ? (
 				<WalletMultiButton
 					style={{
@@ -70,7 +70,7 @@ const WalletButton = () => {
 					Connect Wallet
 				</WalletMultiButton>
 			)}
-		</>
+		</div>
 	)
 }
 

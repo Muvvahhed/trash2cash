@@ -1,7 +1,5 @@
+import MobileMenu from '@/components/MobileNav'
 import SideNav from '@/components/SideNav'
-import WalletButton from '@/components/WalletButton'
-import { Coins, Search, ShoppingBag, Target, Upload, User } from 'lucide-react'
-import Link from 'next/link'
 
 export default function DashboardLayout({
 	children,
@@ -11,8 +9,11 @@ export default function DashboardLayout({
 	return (
 		<div className="h-dvh w-full flex">
 			<SideNav />
-			<section className="h-full w-full  bg-white">
-				<main>{children}</main>
+			<section className="size-full bg-white flex flex-col">
+				<MobileMenu />
+				<main className="size-full lg:pt-10 md:px-10 overflow-y-auto">
+					{children}
+				</main>
 			</section>
 		</div>
 	)

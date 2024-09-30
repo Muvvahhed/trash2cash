@@ -37,7 +37,7 @@ const LandingPage = () => {
 					</li>
 				</ul>
 			</nav>
-			<section className="h-dvh w-full text-center bg-green-500 flex items-center flex-col justify-center text-slate-900 gap-5 ">
+			<section className="h-dvh w-full text-center bg-gradient-to-b to-slate-900  from-green-500 flex items-center flex-col justify-center text-slate-900 gap-5 ">
 				<h2 className="text-5xl lg:text-6xl font-bold">
 					Turn Your Trash into Cash
 				</h2>
@@ -53,7 +53,7 @@ const LandingPage = () => {
 					<ArrowRight />
 				</Link>
 			</section>
-			<section className="min-h-dvh w-full xs:py-20 lg:py-0 bg-slate-900 flex flex-col items-center justify-center text-white">
+			<section className="min-h-dvh w-full xs:py-20 lg:py-0 bg-slate-900 flex flex-col items-center justify-center text-white px-1">
 				<div className="text-center space-y-4">
 					<h2 className="text-5xl lg:text-6xl font-bold ">How It Works</h2>
 					<p className="text-2xl">
@@ -157,7 +157,7 @@ const LandingPage = () => {
 					</div>
 				</div>
 			</section>
-			<section className="h-dvh w-full text-center bg-slate-900  flex items-center flex-col justify-center text-white gap-5 px-1 ">
+			<section className="h-dvh w-full text-center bg-slate-900  flex items-center flex-col justify-center text-white gap-5 px-1">
 				<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl/none text-center">
 					Transforming Waste Into Wealth, One Piece at a Time!
 				</h2>

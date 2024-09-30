@@ -1,7 +1,8 @@
+import BountyPage from '@/components/BountyPage'
 import React from 'react'
 
 function Page() {
-	return <div>Page</div>
+	return <BountyPage />
 }
 
 export default Page

@@ -1,7 +1,8 @@
+import Marketplace from '@/components/MarketPlace'
 import React from 'react'
 
 function MartketPlacePage() {
-	return <div>page</div>
+	return <Marketplace />
 }
 
 export default MartketPlacePage
