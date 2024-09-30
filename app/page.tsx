@@ -20,7 +20,7 @@ import Logo from '@/components/Logo'
 const LandingPage = () => {
 	return (
 		<div className="size-full">
-			<nav className="lg:px-4 py-6 items-center flex fixed top-0 bg-slate-900 w-full">
+			<nav className="lg:px-4 py-4 lg:py-6 items-center flex fixed top-0 bg-slate-900 w-full">
 				<div className="flex items-center">
 					<Logo className="size-10 lg:size-12 mb-2" />
 					<h1 className="text-2xl lg:text-3xl text-green-500">Trash2Ca$h</h1>
