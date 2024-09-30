@@ -14,12 +14,17 @@ import {
 	Upload,
 } from 'lucide-react'
 import Link from 'next/link'
+import logo from './trash-logo.svg'
+import Logo from '@/components/Logo'
 
 const LandingPage = () => {
 	return (
 		<div className="size-full">
-			<nav className="px-4 py-6 items-center flex fixed top-0 bg-slate-900 w-full">
-				<h1 className="text-3xl text-green-500">Trash2Cash</h1>
+			<nav className="lg:px-4 py-6 items-center flex fixed top-0 bg-slate-900 w-full">
+				<div className="flex items-center">
+					<Logo className="size-10 lg:size-12 mb-2" />
+					<h1 className="text-2xl lg:text-3xl text-green-500">Trash2Ca$h</h1>
+				</div>
 				<ul className="lg:flex ml-auto text-lg gap-10 text-green-500 hidden mr-10">
 					<li className="hover:text-green-400">
 						<Link href="#">Features</Link>
@@ -48,7 +53,7 @@ const LandingPage = () => {
 					<ArrowRight />
 				</Link>
 			</section>
-			<section className="h-dvh w-full bg-slate-900 flex flex-col items-center justify-center text-white">
+			<section className="min-h-dvh w-full xs:py-20 lg:py-0 bg-slate-900 flex flex-col items-center justify-center text-white">
 				<div className="text-center space-y-4">
 					<h2 className="text-5xl lg:text-6xl font-bold ">How It Works</h2>
 					<p className="text-2xl">
@@ -84,14 +89,14 @@ const LandingPage = () => {
 				</div>
 			</section>
 			<section className="min-h-dvh w-full text-center bg-white  flex items-center flex-col justify-center text-slate-900 gap-5 py-10">
-				<div className="container px-4 md:px-6">
-					<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+				<div className="px-4 md:px-6">
+					<h2 className=" font-bold tracking-tighter xs:text-5xl lg:text-6xl text-center mb-12">
 						Our Features
 					</h2>
-					<div className="grid xs:gap-2 gap-6 xs:grid-cols-2 lg:grid-cols-3">
+					<div className="grid xs:gap-4 gap-6 xs:grid-cols-2 lg:grid-cols-3 w-full">
 						<Card>
-							<CardHeader>
-								<Upload className="h-10 w-10 text-green-600 mb-2" />
+							<CardHeader className="flex items-center flex-col lg:px-8">
+								<Upload className="size-8 lg:size-10 text-green-600 mb-2 lg:self-start" />
 								<CardTitle>Upload Trash</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -102,8 +107,8 @@ const LandingPage = () => {
 							</CardContent>
 						</Card>
 						<Card>
-							<CardHeader>
-								<Brain className="h-10 w-10 text-blue-600 mb-2" />
+							<CardHeader className="flex items-center flex-col lg:px-8">
+								<Brain className="size-8 lg:size-10 text-blue-600 mb-2 lg:self-start" />
 								<CardTitle>AI Trash Finder</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -114,8 +119,8 @@ const LandingPage = () => {
 							</CardContent>
 						</Card>
 						<Card>
-							<CardHeader>
-								<Coins className="h-10 w-10 text-yellow-600 mb-2" />
+							<CardHeader className="flex items-center flex-col lg:px-8">
+								<Coins className="size-8 lg:size-10 text-yellow-600 mb-2 lg:self-start" />
 								<CardTitle>Earn Rewards</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -126,8 +131,8 @@ const LandingPage = () => {
 							</CardContent>
 						</Card>
 						<Card>
-							<CardHeader>
-								<ShoppingBag className="h-10 w-10 text-purple-600 mb-2" />
+							<CardHeader className="flex items-center flex-col lg:px-8">
+								<ShoppingBag className="size-8 lg:size-10 text-purple-600 mb-2 lg:self-start" />
 								<CardTitle>Marketplace</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -138,8 +143,8 @@ const LandingPage = () => {
 							</CardContent>
 						</Card>
 						<Card>
-							<CardHeader>
-								<Target className="h-10 w-10 text-red-600 mb-2" />
+							<CardHeader className="flex items-center flex-col lg:px-8">
+								<Target className="size-8 lg:size-10 text-red-600 mb-2 lg:self-start" />
 								<CardTitle>Bounties</CardTitle>
 							</CardHeader>
 							<CardContent>

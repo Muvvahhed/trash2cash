@@ -18,7 +18,7 @@ function SideNav() {
 				<Link
 					href="/upload-trash"
 					className={`pl-4 py-4 hover:bg-green-500 w-full flex rounded-md  items-center gap-2 ${
-						pathname.startsWith('upload-trash') && 'bg-green-500'
+						pathname.startsWith('/upload-trash') && 'bg-green-500'
 					}`}
 				>
 					<Upload className="size-5 mb-1" />
@@ -27,7 +27,7 @@ function SideNav() {
 				<Link
 					href="/rewards"
 					className={`pl-4 py-4 hover:bg-green-500 w-full flex rounded-md  items-center gap-2 ${
-						pathname.startsWith('rewards') && 'bg-green-500'
+						pathname.startsWith('/rewards') && 'bg-green-500'
 					}`}
 				>
 					<Coins className="size-5 mb-1" />
@@ -36,7 +36,7 @@ function SideNav() {
 				<Link
 					href="/marketplace"
 					className={`pl-4 py-4 hover:bg-green-500 w-full flex rounded-md  items-center gap-2 ${
-						pathname.startsWith('marketplace') && 'bg-green-500'
+						pathname.startsWith('/marketplace') && 'bg-green-500'
 					}`}
 				>
 					<ShoppingBag className="size-5 mb-1" />
