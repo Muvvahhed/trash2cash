@@ -21,8 +21,8 @@ export default function UserProfile() {
 	return (
 		<Fragment>
 			{!connected ? (
-				<div className="mx-auto p-4 my-10">
-					<Card className="w-full max-w-md mx-auto">
+				<div className="size-full flex">
+					<Card className="w-full max-w-md mx-auto my-auto">
 						<CardHeader>
 							<CardTitle className="text-center">Connect Your Wallet</CardTitle>
 							<CardDescription className="text-center">
@@ -36,7 +36,7 @@ export default function UserProfile() {
 								wallet. Connect your wallet to view and manage your account.
 							</p>
 							<div className="w-full">
-								<WalletButton />
+								<WalletButton dark />
 							</div>
 						</CardContent>
 					</Card>

@@ -3,7 +3,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useEffect, useState } from 'react'
 
-const WalletButton = () => {
+const WalletButton = ({ dark }: { dark?: boolean }) => {
 	const { publicKey, signMessage, connected } = useWallet()
 	const [isAuthenticated, setIsAuthenticated] = useState(false)
 
@@ -59,7 +59,7 @@ const WalletButton = () => {
 			) : (
 				<WalletMultiButton
 					style={{
-						backgroundColor: 'rgb(34 197 94)',
+						backgroundColor: dark ? 'rgb(15 23 42)' : 'rgb(34 197 94)',
 						padding: '16px',
 						margin: 0,
 						display: 'flex',
