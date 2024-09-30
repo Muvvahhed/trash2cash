@@ -3,10 +3,17 @@ import { Fragment, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from '@/components/ui/card'
 import { Info, User, Wallet } from 'lucide-react'
 import { Textarea } from './ui/textarea'
 import { useWallet } from '@solana/wallet-adapter-react'
+import WalletButton from './WalletButton'
 
 export default function UserProfile() {
 	const [isEditing, setIsEditing] = useState(false)
@@ -14,13 +21,25 @@ export default function UserProfile() {
 	return (
 		<Fragment>
 			{!connected ? (
-				<div className="size-full items-center justify-center flex px-2">
-					<div className="bg-slate-900   text-white rounded-lg py-8 px-4 md:p-10 flex items-center justify-center md:gap-2">
-						<Info className="size-10 self-start" />
-						<h2 className="text-2xl text-center">
-							You need to connect a Wallet to continue
-						</h2>
-					</div>
+				<div className="mx-auto p-4 my-10">
+					<Card className="w-full max-w-md mx-auto">
+						<CardHeader>
+							<CardTitle className="text-center">Connect Your Wallet</CardTitle>
+							<CardDescription className="text-center">
+								You need to connect your Solana wallet to access your profile
+							</CardDescription>
+						</CardHeader>
+						<CardContent className="flex flex-col items-center">
+							<Wallet className="w-24 h-24 text-gray-400 mb-4" />
+							<p className="text-center mb-6">
+								Your profile information and rewards are linked to your Solana
+								wallet. Connect your wallet to view and manage your account.
+							</p>
+							<div className="w-full">
+								<WalletButton />
+							</div>
+						</CardContent>
+					</Card>
 				</div>
 			) : (
 				<div className="space-y-8 px-4 pb-6 size-full flex flex-col overflow-y-auto pt-10">
