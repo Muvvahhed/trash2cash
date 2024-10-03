@@ -36,7 +36,7 @@ const LandingPage = () => {
 					</li>
 				</ul>
 			</nav>
-			<section className="h-dvh w-full text-center bg-green-500 md:bg-gradient-to-b to-slate-900  from-green-500 flex items-center flex-col justify-center text-slate-900 gap-5 ">
+			<section className="h-dvh w-full text-center bg-green-500 flex items-center flex-col justify-center text-slate-900 gap-5 ">
 				<h2 className="text-5xl lg:text-6xl font-bold">
 					Turn Your Trash into Cash
 				</h2>
