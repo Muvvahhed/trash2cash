@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// User model for app users
+model User {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  wallet      String        @unique 
+  email       String?
+  username    String?
+  contactInfo String?
+  createdAt   DateTime      @default(now())
+  trashItems  Trash[]
+  bounties    Bounty[]
+  rewards     Reward[]
+  buyerOf     Transaction[] @relation("Buyer")
+  sellerOf    Transaction[] @relation("Seller")
+}
+
+// Trash model for uploaded trash items
+model Trash {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  imageUrl    String
+  location    String? // Optional map location for where trash should be deposited
+  ownerId     String        @db.ObjectId
+  owner       User          @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime      @default(now())
+  price       Float?        @default(0)   // Optional price for selling on the marketplace
+  Transaction Transaction[]
+}
+
+// Bounty model for users to set specific trash-related tasks
+model Bounty {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  reward      Float // Reward amount in USDT or other tokens
+  creatorId   String       @db.ObjectId
+  creator     User         @relation(fields: [creatorId], references: [id])
+  createdAt   DateTime     @default(now())
+  status      BountyStatus @default(PENDING) // ENUM for bounty status
+}
+
+enum BountyStatus {
+  PENDING
+  CLAIMED
+  COMPLETED
+}
+
+// Reward model for tracking user rewards from recycling
+model Reward {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  amount    Float // Reward amount in tokens (e.g., USDT)
+  createdAt DateTime @default(now())
+}
+
+// Transaction model for marketplace purchases
+model Transaction {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  buyer           User     @relation("Buyer", fields: [buyerId], references: [id])
+  buyerId         String   @db.ObjectId
+  seller          User     @relation("Seller", fields: [sellerId], references: [id])
+  sellerId        String   @db.ObjectId
+  trashId         String   @db.ObjectId
+  trash           Trash    @relation(fields: [trashId], references: [id])
+  amount          Float
+  transactionDate DateTime @default(now())
+}

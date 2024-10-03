@@ -14,7 +14,6 @@ import {
 	Upload,
 } from 'lucide-react'
 import Link from 'next/link'
-import logo from './trash-logo.svg'
 import Logo from '@/components/Logo'
 
 const LandingPage = () => {

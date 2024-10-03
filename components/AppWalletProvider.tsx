@@ -20,7 +20,7 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
 import { useWallet } from '@solana/wallet-adapter-react'
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-	const network = WalletAdapterNetwork.Devnet
+	const network = WalletAdapterNetwork.Mainnet
 
 	//initiate auto connect
 	const { autoConnect } = useWallet()
