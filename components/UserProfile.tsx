@@ -23,6 +23,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import WalletButton from './WalletButton'
 import { getOrCreateUser, updateUserProfile } from '@/utils/actions'
 import { User } from '@prisma/client'
+import { BarLoader } from 'react-spinners'
 
 export default function UserProfile() {
 	const [isEditing, setIsEditing] = useState(false)
@@ -85,10 +86,10 @@ export default function UserProfile() {
 				<Fragment>
 					{isPending ? (
 						<div className="size-full items-center justify-center flex">
-							<p>Loading....</p>
+							<BarLoader color="rgb(15 23 42)" />
 						</div>
 					) : (
-						<div className="space-y-8 px-4 pb-6 size-full flex flex-col overflow-y-auto pt-10">
+						<div className="space-y-8  px-4 pb-6 size-full flex flex-col overflow-y-auto pt-10">
 							<h2 className="text-2xl lg:text-3xl font-semibold">
 								User Profile
 							</h2>
