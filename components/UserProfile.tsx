@@ -175,10 +175,11 @@ export default function UserProfile() {
 										{connected ? (
 											<div className="space-y-2">
 												<Label>Connected Wallet</Label>
-												<div className="flex items-center space-x-2">
+												<div className="flex items-center space-x-2 w-full">
 													<Wallet className="h-4 w-4" />
-													<span className="text-sm font-medium">
-														{publicKey?.toString()}
+													<span className="text-sm font-medium flex flex-wrap max-w-[100px] break-words">
+														{publicKey?.toString().slice(0, 6)}...
+														{publicKey?.toString().slice(-4)}
 													</span>
 												</div>
 											</div>
@@ -212,9 +213,9 @@ function WalletNotConnected() {
 						Your profile information and rewards are linked to your Solana
 						wallet. Connect your wallet to view and manage your account.
 					</p>
-					<div className="w-full">
+					{/* <div className="w-full">
 						<WalletButton dark />
-					</div>
+					</div> */}
 				</CardContent>
 			</Card>
 		</div>
