@@ -30,7 +30,10 @@ function MobileMenu() {
 					<SheetTrigger className="flex items-center">
 						<MenuIcon className="size-10 text-green-600" />
 					</SheetTrigger>
-					<SheetContent side={'left'} className="bg-slate-900 text-white">
+					<SheetContent
+						side={'left'}
+						className="bg-slate-900 text-white border-0"
+					>
 						<SheetClose
 							onClick={() => {
 								router.push('/upload-trash')
