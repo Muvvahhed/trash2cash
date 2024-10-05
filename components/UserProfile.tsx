@@ -177,9 +177,9 @@ export default function UserProfile() {
 												<Label>Connected Wallet</Label>
 												<div className="flex items-center space-x-2 w-full">
 													<Wallet className="h-4 w-4" />
-													<span className="text-sm font-medium flex flex-wrap max-w-[100px] break-words">
+													<div className="text-sm font-medium break-words whitespace-normal w-[80%] md:w-full">
 														{publicKey?.toString()}
-													</span>
+													</div>
 												</div>
 											</div>
 										) : (
