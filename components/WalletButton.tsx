@@ -55,27 +55,22 @@ const WalletButton = ({ dark }: { dark?: boolean }) => {
 	return (
 		<div className="flex md:flex-col gap-4">
 			{!connected ? (
-				<WalletConnectButton
-					// labels={{
-					// 	// 'change-wallet': 'Change Wallet',
-					// 	// 'copy-address': 'Copy Address',
-					// 	'has-wallet': 'Connected',
-					// 	'no-wallet': 'Connect Wallet',
-					// 	connecting: 'Connecting...',
-					// 	connected: 'Connected',
-					// 	// copied: 'Copied',
-					// 	// disconnect: 'Disconnect',
-					// }}
-					// className="bg-red-500 text-white w-full p-4 flex justify-center"
+				<BaseWalletConnectButton
+					labels={{
+						'has-wallet': 'Connect',
+						'no-wallet': 'Connect Wallet',
+						connecting: 'Connecting...',
+						connected: 'Connected',
+					}}
 					style={{
 						backgroundColor: 'rgb(34 197 94) text-white',
-						padding: '16px',
+						padding: '16px 12px',
 						margin: 0,
 						display: 'flex',
 						justifyContent: 'center',
 						width: '100%',
 					}}
-				></WalletConnectButton>
+				></BaseWalletConnectButton>
 			) : (
 				<WalletDisconnectButton
 					// labels={{
