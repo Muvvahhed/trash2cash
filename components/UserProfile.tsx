@@ -178,8 +178,7 @@ export default function UserProfile() {
 												<div className="flex items-center space-x-2 w-full">
 													<Wallet className="h-4 w-4" />
 													<span className="text-sm font-medium flex flex-wrap max-w-[100px] break-words">
-														{publicKey?.toString().slice(0, 6)}...
-														{publicKey?.toString().slice(-4)}
+														{publicKey?.toString()}
 													</span>
 												</div>
 											</div>
