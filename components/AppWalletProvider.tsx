@@ -26,7 +26,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const { autoConnect } = useWallet()
 
 	// You can also provide a custom RPC endpoint.
-	const endpoint = useMemo(() => clusterApiUrl(network), [network])
+	const endpoint = clusterApiUrl('mainnet-beta')
 
 	//wallets
 	const wallets = useMemo(
@@ -42,7 +42,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
 	return (
 		<ConnectionProvider endpoint={endpoint}>
-			<WalletProvider wallets={wallets} autoConnect>
+			<WalletProvider wallets={wallets}>
 				<WalletModalProvider>{children}</WalletModalProvider>
 			</WalletProvider>
 		</ConnectionProvider>
