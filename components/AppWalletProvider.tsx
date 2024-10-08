@@ -22,8 +22,8 @@ import { useWallet } from '@solana/wallet-adapter-react'
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const network = WalletAdapterNetwork.Mainnet
 
-	//initiate auto connect
-	const { autoConnect } = useWallet()
+	// //initiate auto connect
+	// const { autoConnect } = useWallet()
 
 	// You can also provide a custom RPC endpoint.
 	const endpoint = useMemo(() => clusterApiUrl(network), [network])

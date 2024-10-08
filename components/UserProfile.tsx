@@ -24,6 +24,7 @@ import WalletButton from './WalletButton'
 import { getOrCreateUser, updateUserProfile } from '@/utils/actions'
 import { User } from '@prisma/client'
 import { BarLoader } from 'react-spinners'
+import { useToast } from '@/hooks/use-toast'
 
 export default function UserProfile() {
 	const [isEditing, setIsEditing] = useState(false)
@@ -35,6 +36,7 @@ export default function UserProfile() {
 	const [contact, setContact] = useState('')
 	const [isPending, startTransition] = useTransition()
 	const [isLoading, setIsLoading] = useState(false)
+	const { toast } = useToast()
 
 	useEffect(() => {
 		const fetchUser = async () => {
@@ -66,12 +68,12 @@ export default function UserProfile() {
 			contactInfo: contact,
 		}
 
-		const response = await updateUserProfile(wallet, updatedUser) // Use the server action for updating user
+		const response = await updateUserProfile(wallet, updatedUser)
 
 		if (response) {
-			// // Optionally, refresh the user data
-			// setUser(response)
-			alert('Profile updated successfully!')
+			toast({
+				title: 'Profile updated successfully!',
+			})
 		}
 
 		setIsLoading(false)

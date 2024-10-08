@@ -9,11 +9,13 @@ import {
 	WalletConnectButton,
 	WalletIconProps,
 	WalletDisconnectButton,
+	BaseWalletDisconnectButton,
 } from '@solana/wallet-adapter-react-ui'
 import { useEffect, useState } from 'react'
+import { Button } from './ui/button'
 
 const WalletButton = ({ dark }: { dark?: boolean }) => {
-	const { publicKey, signMessage, connected, wallet } = useWallet()
+	const { publicKey, signMessage, connected } = useWallet()
 	const [isAuthenticated, setIsAuthenticated] = useState(false)
 
 	useEffect(() => {
@@ -31,7 +33,6 @@ const WalletButton = ({ dark }: { dark?: boolean }) => {
 
 				setIsAuthenticated(true)
 
-				// // Send the publicKey and signature to your backend for verification
 				// const response = await fetch('/api/authenticate', {
 				// 	method: 'POST',
 				// 	headers: { 'Content-Type': 'application/json' },
@@ -54,6 +55,19 @@ const WalletButton = ({ dark }: { dark?: boolean }) => {
 	}
 	return (
 		<div className="flex md:flex-col gap-4">
+			<WalletModalButton
+				style={{
+					backgroundColor: 'rgb(241 245 249)',
+					color: 'rgb(15 23 42)',
+					padding: '16px',
+					margin: 0,
+					display: 'flex',
+					justifyContent: 'center',
+					width: '100%',
+				}}
+			>
+				{!connected ? 'Select Wallet' : 'Change Wallet'}
+			</WalletModalButton>
 			{!connected ? (
 				<BaseWalletConnectButton
 					labels={{
@@ -72,18 +86,12 @@ const WalletButton = ({ dark }: { dark?: boolean }) => {
 					}}
 				></BaseWalletConnectButton>
 			) : (
-				<WalletDisconnectButton
-					// labels={{
-					// 	// 'change-wallet': 'Change Wallet',
-					// 	// 'copy-address': 'Copy Address',
-					// 	'has-wallet': 'Connected',
-					// 	'no-wallet': 'Connect Wallet',
-					// 	connecting: 'Connecting...',
-					// 	connected: 'Connected',
-					// 	// copied: 'Copied',
-					// 	// disconnect: 'Disconnect',
-					// }}
-					// className="bg-red-500 text-white w-full p-4 flex justify-center"
+				<BaseWalletDisconnectButton
+					labels={{
+						'has-wallet': 'Disconnect',
+						'no-wallet': 'Disconnect',
+						disconnecting: 'Disonnecting...',
+					}}
 					style={{
 						backgroundColor: 'rgb(34 197 94)',
 						padding: '16px',
@@ -92,22 +100,8 @@ const WalletButton = ({ dark }: { dark?: boolean }) => {
 						justifyContent: 'center',
 						width: '100%',
 					}}
-				></WalletDisconnectButton>
+				></BaseWalletDisconnectButton>
 			)}
-
-			<WalletModalButton
-				style={{
-					backgroundColor: 'rgb(15 23 42)',
-					border: '1px solid white',
-					padding: '16px',
-					margin: 0,
-					display: 'flex',
-					justifyContent: 'center',
-					width: '100%',
-				}}
-			>
-				{!connected ? 'Select Wallet' : 'Change Wallet'}
-			</WalletModalButton>
 		</div>
 	)
 }

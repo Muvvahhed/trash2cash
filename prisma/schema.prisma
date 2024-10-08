@@ -31,7 +31,9 @@ model User {
 // Trash model for uploaded trash items
 model Trash {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  description String
+  description String?
+  name        String
+  category    String
   imageUrl    String
   location    String? // Optional map location for where trash should be deposited
   ownerId     String        @db.ObjectId
