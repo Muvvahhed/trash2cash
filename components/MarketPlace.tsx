@@ -112,6 +112,7 @@ export default function Marketplace({
 			const data = await response.json()
 			const newEntry = data.data as { owner: User } & Trash
 			setTrashItems((prev) => [...prev, newEntry])
+			console.log('New entry:', newEntry)
 			// Reset form
 			setNewItem({
 				name: '',

@@ -24,7 +24,7 @@ export default function RewardSection() {
 						<Coins className="h-4 w-4 text-muted-foreground" />
 					</CardHeader>
 					<CardContent>
-						<div className="text-2xl font-bold">1,234 SOL</div>
+						<div className="text-2xl font-bold">1,234 ecos</div>
 						<p className="text-xs text-muted-foreground">
 							+20.1% from last month
 						</p>
@@ -61,13 +61,13 @@ export default function RewardSection() {
 						<TableRow>
 							<TableCell>2023-06-01</TableCell>
 							<TableCell>Recycling Reward</TableCell>
-							<TableCell>5 SOL</TableCell>
+							<TableCell>5 ecos</TableCell>
 							<TableCell>Completed</TableCell>
 						</TableRow>
 						<TableRow>
 							<TableCell>2023-05-28</TableCell>
 							<TableCell>Bounty Completion</TableCell>
-							<TableCell>10 SOL</TableCell>
+							<TableCell>10 ecos</TableCell>
 							<TableCell>Completed</TableCell>
 						</TableRow>
 						{/* Add more rows as needed */}
