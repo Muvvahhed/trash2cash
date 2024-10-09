@@ -1,13 +1,7 @@
 import { uploadToCloudinary } from '@/utils/cloudinary'
 import { prisma } from '@/utils/db'
-import { mkdirSync, writeFileSync } from 'fs'
-import { writeFile } from 'fs/promises'
-import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
-import path from 'path'
-
-// import { createTrash } from '@/app/serveractions';
-// import cloudinary from '@/lib/cloudinary';
+import sharp from 'sharp'
 
 export async function POST(req: Request) {
 	try {
@@ -21,37 +15,37 @@ export async function POST(req: Request) {
 		const name = formData.get('name')?.toString()
 
 		if (!walletId || !name) {
-			return NextResponse.json({ error: 'Invalid Request' }, { status: 400 })
+			return NextResponse.json(
+				{ error: 'Missing required fields: walletId or name' },
+				{ status: 400 }
+			)
 		}
 
 		const owner = await prisma.user.findUnique({
-			where: {
-				wallet: walletId,
-			},
+			where: { wallet: walletId },
 		})
 
 		if (!owner) {
-			return NextResponse.json({ error: 'Invalid Request' }, { status: 400 })
+			return NextResponse.json({ error: 'Owner not found' }, { status: 400 })
 		}
 
 		let imageUrl = ''
-		// Upload image to Cloudinary
+		// Handle image upload
 		if (imageFile) {
 			const arrayBuffer = await imageFile.arrayBuffer()
-			const buffer = new Uint8Array(arrayBuffer)
-			const tempImagePath = path.join(
-				__dirname,
-				'temp',
-				`${Date.now()}_compressed.jpg`
-			)
-			mkdirSync(path.dirname(tempImagePath), { recursive: true })
+			const buffer = Buffer.from(arrayBuffer)
 
-			writeFileSync(tempImagePath, buffer)
-			let compressedFilePath = tempImagePath
-			imageUrl = await uploadToCloudinary(compressedFilePath)
+			// Compress the image using sharp in-memory
+			const compressedBuffer = await sharp(buffer)
+				.resize(800) // Resize to 800px width (adjust as needed)
+				.jpeg({ quality: 80 }) // Compress image to 80% quality
+				.toBuffer()
+
+			// Upload compressed image to Cloudinary directly from buffer
+			imageUrl = await uploadToCloudinary(compressedBuffer)
 		}
 
-		// // Create new trash entry in database
+		// Create a new trash entry in the database
 		const newTrash = await prisma.trash.create({
 			data: {
 				description,
@@ -62,9 +56,7 @@ export async function POST(req: Request) {
 				name,
 				price: price ? parseFloat(price) : 0,
 			},
-			include: {
-				owner: true,
-			},
+			include: { owner: true },
 		})
 
 		return NextResponse.json({
