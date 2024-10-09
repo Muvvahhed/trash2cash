@@ -109,7 +109,8 @@ export default function Marketplace({
 
 		if (response.ok) {
 			// Handle success
-			const newEntry = (await response.json()) as { owner: User } & Trash
+			const data = await response.json()
+			const newEntry = data.data as { owner: User } & Trash
 			setTrashItems((prev) => [...prev, newEntry])
 			// Reset form
 			setNewItem({
@@ -133,7 +134,6 @@ export default function Marketplace({
 		}
 		closeRef?.current?.click()
 		setIsUploading(false)
-		window.location.reload()
 	}
 
 	return (
