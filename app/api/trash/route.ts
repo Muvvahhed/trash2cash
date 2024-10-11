@@ -35,13 +35,11 @@ export async function POST(req: Request) {
 			const arrayBuffer = await imageFile.arrayBuffer()
 			const buffer = Buffer.from(arrayBuffer)
 
-			// Compress the image using sharp in-memory
 			const compressedBuffer = await sharp(buffer)
-				.resize(800) // Resize to 800px width (adjust as needed)
-				.jpeg({ quality: 80 }) // Compress image to 80% quality
+				.resize(800)
+				.jpeg({ quality: 80 })
 				.toBuffer()
 
-			// Upload compressed image to Cloudinary directly from buffer
 			imageUrl = await uploadToCloudinary(compressedBuffer)
 		}
 
