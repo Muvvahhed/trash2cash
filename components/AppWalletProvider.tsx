@@ -34,8 +34,8 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 			new PhantomWalletAdapter(),
 			new SolflareWalletAdapter(),
 			new MathWalletAdapter(),
-			// new TrustWalletAdapter(),
-			// new CoinbaseWalletAdapter(),
+			new TrustWalletAdapter(),
+			new CoinbaseWalletAdapter(),
 		],
 		[network]
 	)
